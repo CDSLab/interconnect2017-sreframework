@@ -1,24 +1,35 @@
 #!/bin/bash
 
-APACHE_IMAGE="nimmis/alpine-apache"
-NGINX_IMAGE="smebberson/alpine-nginx"
-CADVISOR_IMAGE="google/cadvisor"
-LOG_FILE="/tmp/setup.log"
-APACHE_1="app1"
-APACHE_2="app2"
-NGINX="loadbalancer"
-CADVISOR="cadvisor"
+. ./variables.sh
+. ./remove_containers.sh
 
 echo "\n\n\n*********** INITIATING SETUP **************";
+
+
+create_nginx_default_conf(){
+cat > default.conf << EOF
+"upstream backend {
+  server "$APACHE_1_IP";
+  server "$APACHE_2_IP" backup;
+}
+server {
+  listen 80;
+  location / {
+    proxy_pass http://backend;
+  }
+}"
+EOF
+}
+
 
 echo "\nPulling the required docker images... "
 
 if docker pull $APACHE_IMAGE >>$LOG_FILE 2>&1 &&
    docker pull $NGINX_IMAGE >>$LOG_FILE 2>&1 &&
    docker pull $CADVISOR_IMAGE >>$LOG_FILE 2>&1
-then 
+then
   echo "Docker images pulled."
-else 
+else
   echo "Error pulling the docker images. Check logs at '$LOG_FILE'.";
   exit 1;
 fi
@@ -27,10 +38,10 @@ fi
 echo "\nStarting the Apache containers..."
 if docker run -d --name $APACHE_1 $APACHE_IMAGE >>$LOG_FILE 2>&1 &&
    docker run -d --name $APACHE_2 $APACHE_IMAGE >>$LOG_FILE 2>&1
-then  echo "\nApache containers started successfully."
+then  echo "Apache containers started successfully."
 else
   echo "Killing the existing containers and trying again..."
-  docker rm -f $(docker ps -aq) >>$LOG_FILE 2>&1;
+  remove_containers
   echo "Starting the Apache containers again..."
   docker run -d --name $APACHE_1 $APACHE_IMAGE >>$LOG_FILE 2>&1;
   docker run -d --name $APACHE_2 $APACHE_IMAGE >>$LOG_FILE 2>&1;
@@ -40,32 +51,16 @@ fi
 echo "\nSetting up the NginX Load Balancer..."
 
 APACHE_1_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $APACHE_1)
-# echo $APACHE_1_I
-
 APACHE_2_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $APACHE_2)
-# echo $APACHE_2_IP
 
-cat > default.conf << EOF
-upstream backend {
-  server "$APACHE_1_IP";
-  server "$APACHE_2_IP" backup;
-}
-server {
-  listen 80;
-  location / {
-    proxy_pass http://backend;
-  }
-}
-EOF
-
-docker run -d -p 80:80 --name $NGINX $NGINX_IMAGE >>$LOG_FILE 2>&1
-docker cp default.conf $NGINX:/etc/nginx/conf.d/default.conf >>$LOG_FILE 2>&1
-
-if docker restart $NGINX >>$LOG_FILE 2>&1
-then 
+if docker run -d -p 80:80 --name $NGINX $NGINX_IMAGE >>$LOG_FILE 2>&1 &&
+   create_nginx_default_conf &&
+   docker cp default.conf $NGINX:/etc/nginx/conf.d/default.conf >>$LOG_FILE 2>&1 &&
+   docker restart $NGINX >>$LOG_FILE 2>&1
+then
   rm default.conf;
   echo "Load Balancer setup completed.";
-else 
+else
   echo "Error setting up the Load Balancer. Check logs at '$LOG_FILE'.";
   exit 1;
 fi
@@ -88,13 +83,9 @@ else
   exit 1;
 fi
 
-echo "\n*********** SETUP COMPLETED **************";
+echo "\n*********** SETUP COMPLETED **************"
 
 echo "\nApp:  http://localhost"
 echo "CAdvisor: http://localhost:8081\n\n\n"
 
-
-exit 0;
-
-
-
+exit 0

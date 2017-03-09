@@ -1,0 +1,11 @@
+---
+
+
+
+- name: ListInputConnections
+  shell: iptables -L INPUT -n --line-numbers
+
+
+- name: ListOutputConnections
+  shell : iptables -L OUTPUT -n --line-numbers
+

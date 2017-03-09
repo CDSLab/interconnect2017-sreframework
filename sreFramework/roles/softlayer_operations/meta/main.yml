@@ -1,0 +1,4 @@
+---
+dependencies:
+  - {role: pip_operations, package: requests, state: latest}
+  - {role: pip_operations, package: SoftLayer, state: latest}

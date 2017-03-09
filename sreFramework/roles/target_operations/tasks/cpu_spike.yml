@@ -1,0 +1,12 @@
+- include: ./install_lookbusy.yml
+  become: Yes
+
+- name: Copy lookbusy.py
+  copy:
+    src: lookbusy.py
+    dest: /tmp
+    mode: "0777"
+  become: Yes
+
+- name: Spike CPU
+  command: python /tmp/lookbusy.py {{cpu_pct}} {{seconds}}

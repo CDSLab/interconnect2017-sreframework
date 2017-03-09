@@ -1,0 +1,3 @@
+
+- name: Kill the process {{ process_name }}
+  shell: pkill -9 -f {{ process_name }}

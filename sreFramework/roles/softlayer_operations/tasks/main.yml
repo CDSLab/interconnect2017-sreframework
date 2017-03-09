@@ -1,0 +1,13 @@
+- name: "RUNNING SOFTLAYER OPERATION '{{ sl_operation  }}' for HOSTNAME: '{{ sl_hostname }}'"
+  command: python ../sreFramework/roles/softlayer_operations/files/run_softlayer_requests.py {{ sl_operation }} {{ sl_hostname }} {{ sl_username }} {{ sl_api_key }}
+  register: result
+
+
+- debug: var=result.stdout_lines
+
+- name: OUTPUT FOR THE SOFTLAYER OPERATION {{ sl_operation }} WITH HOSTNAME {{ sl_hostname }}
+  debug: var=result.stdout
+
+- fail: msg="'{{sl_operation}}'was unsuccesfull"
+  when: ( 'True' not in result.stdout and '{{ sl_operation }}' == 'powerOn') or
+        ( 'True' not in result.stdout and '{{ sl_operation }}' == 'powerOff')

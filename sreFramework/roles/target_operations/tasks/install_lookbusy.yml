@@ -1,0 +1,19 @@
+---
+  - name: create directory lb
+    file: path=/tmp/lb state=directory
+
+  - name: get lookbusy
+    get_url:
+      url: http://www.devin.com/lookbusy/download/lookbusy-1.4.tar.gz
+      dest: /tmp/lb
+
+  - name: unarchive lookbusy
+    shell: tar -xzf lookbusy-1.4.tar.gz chdir=/tmp/lb
+
+  - name: run lookbusy configuration
+    shell: sh configure chdir=/tmp/lb/lookbusy-1.4
+
+  - make: chdir=/tmp/lb/lookbusy-1.4
+
+  - name: make install
+    make: chdir=/tmp/lb/lookbusy-1.4 target=install

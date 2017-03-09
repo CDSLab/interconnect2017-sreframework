@@ -1,0 +1,5 @@
+---
+# tasks file for pip_operations
+ - name: pip {{ package }} to {{ state }}
+   pip: name={{ package }} state={{ state }}
+   become: true 

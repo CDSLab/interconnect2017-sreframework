@@ -1,0 +1,5 @@
+---
+- name: pull image {{ image_name }}
+  docker_image:
+    name: "{{ image_name }}"
+

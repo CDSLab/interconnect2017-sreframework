@@ -1,0 +1,20 @@
+
+- name: Kill process
+  include: ./kill_process_by_name.yml
+  when: target_operation == "kill_process_by_name"
+
+- name: Stop service
+  include: ./stop_service_by_name.yml
+  when: target_operation == "stop_service_by_name"
+
+- name: Start service
+  include: ./start_service_by_name.yml
+  when: target_operation == "start_service_by_name"
+
+- name: Restart service
+  include: ./restart_service_by_name.yml
+  when: target_operation == "restart_service_by_name"  
+
+- name: Spike CPU
+  include: ./cpu_spike.yml
+  when: target_operation == "cpu_spike"  

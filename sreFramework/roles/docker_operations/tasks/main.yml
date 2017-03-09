@@ -1,0 +1,17 @@
+---
+# tasks file for docker_operations
+
+- include: ./stop_container.yml
+  when: docker_operation == "stop_container"
+
+- include: ./start_container.yml
+  when: docker_operation == "start_container"
+
+- include: ./kill_container.yml
+  when: docker_operation == "kill_container"
+
+- include: ./pull_image.yml
+  when: docker_operation == "pull_image"
+
+- include: ./remove_image.yml
+  when: docker_operation == "remove_image"

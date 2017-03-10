@@ -8,5 +8,3 @@ APACHE_1="app1"
 APACHE_2="app2"
 NGINX="loadbalancer"
 CADVISOR="cadvisor"
-
-echo "\n\n\nTime: $(date)\n\n\n" >>$LOG_FILE 2>&1

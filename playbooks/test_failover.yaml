@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  roles:
+  - {
+      role: docker_operations,
+      docker_operation: stop_container,
+      container_name: app1
+    }

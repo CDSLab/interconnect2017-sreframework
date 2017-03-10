@@ -1,8 +1,22 @@
 ---
 - hosts: localhost
+  tasks:
+    - name: Ensure that the app is running
+      uri:
+        url: http://localhost:80
   roles:
   - {
       role: docker_operations,
       docker_operation: stop_container,
       container_name: app1
     }
+  tasks:
+    - name: Test the App server failover
+      uri:
+        url: http://localhost:80
+    - name: Verify the alert for killed server
+      uri:
+        url: http://localhost:8081/api/v1.3/docker/app1
+        register: result
+        fail: msg="Failed as the Server 1 is still active"
+        when: result.status == 200

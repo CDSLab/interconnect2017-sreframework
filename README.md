@@ -8,3 +8,6 @@ Cloud services are prone to unpredictable issues out in the real world. These is
 
 ### Technologies involved:
 
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/2295612/23793540/a3d03abe-0540-11e7-9b21-6e82119c94ce.jpg" width="600" height="400">
+</p>

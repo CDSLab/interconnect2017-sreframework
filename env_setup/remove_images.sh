@@ -11,7 +11,7 @@ if docker rmi $APACHE_IMAGE >>$LOG_FILE 2>&1 &&
 then
   echo ">> Images removed successfully." | tee -a $LOG_FILE
 else
-  echo ">> Error removing the images. Check logs at '$LOG_FILE'" | tee -a $LOG_FILE;
-  exit 1;
+  echo ">> Error removing the images. One or more Images might not exist. Check logs at '$LOG_FILE'" | tee -a $LOG_FILE;
+  # exit 1;
 fi
 }

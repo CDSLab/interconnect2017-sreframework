@@ -7,6 +7,8 @@
 * Kill the App Server 1 Container, thereby forcing the NginX Load Balancer to switch to the App Server 2 Container; using the SRE Ansible framework.
 * Ensure that an alert is thrown for the killed Docker Container (Real world scenarios would expect auto-resolution).
 
+---
+
 #### Lets head on to writing some code:
 
 ```shell

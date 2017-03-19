@@ -110,3 +110,21 @@ Open up a browser to check the running app at:
 And check cAdvisor at:
 
 <http://localhost:8081>
+
+#### Check the running docker containers 
+
+```shell
+docker ps
+```
+
+#### Expected output:
+
+```shell
+~/github/interconnect2017-sreframework$ docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                         NAMES
+e4eb480fa089        google/cadvisor           "/usr/bin/cadvisor..."   8 minutes ago       Up 7 minutes        0.0.0.0:8081->8080/tcp        cadvisor
+d16a5378c7b1        smebberson/alpine-nginx   "/init"                  8 minutes ago       Up 8 minutes        0.0.0.0:80->80/tcp, 443/tcp   loadbalancer
+47dc09057d2a        nimmis/alpine-apache      "/boot.sh"               8 minutes ago       Up 8 minutes        80/tcp, 443/tcp               app2
+629f049efb94        nimmis/alpine-apache      "/boot.sh"               8 minutes ago       Up 8 minutes        80/tcp, 443/tcp               app1
+
+```

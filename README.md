@@ -128,3 +128,5 @@ d16a5378c7b1        smebberson/alpine-nginx   "/init"                  8 minutes
 629f049efb94        nimmis/alpine-apache      "/boot.sh"               8 minutes ago       Up 8 minutes        80/tcp, 443/tcp               app1
 
 ```
+
+## Finally, lets head on to our [Exercise 1](https://github.com/CDSLab/interconnect2017-sreframework/tree/master/playbooks/exercise_1).

@@ -91,6 +91,7 @@ In the real world scenario, we would use the PagerDuty Role in the SRE Framework
 ```shell
 cd ~/interconnect2017-sreframework/playbooks/
 ```
+---
 
 The file `ansible.cfg` defines the configurations for our Ansible playbooks.
 
@@ -103,6 +104,8 @@ callback_plugins = ../sreFramework/callback_plugins
 ```
 
 We'll learn more about roles and modules in our Exercise 2.
+
+---
 
 Run the `failover.yaml` playbook from this folder to have access to the Ansible configurations.
 

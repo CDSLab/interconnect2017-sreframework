@@ -31,8 +31,84 @@ For the sake of simplicity, lets consider a simple Cloud Service architecture co
 * **Exercise 2**
     > Understand the encapsulated SRE framework and design a new Role to automate Fault Injections.
 
+### Instructions:
+
+_First things First..._
+* Log into the Ubuntu VM for our workshop 4486A using the credentials provided on the screen.
+* Make sure that you have Internet Connection.
+* Make sure that you are able to use a browser and the terminal.
+* If all’s well, we are good to go!
+
+
+Open up the terminal.
+
+
+```shell
+git clone https://github.com/CDSLab/interconnect2017-sreframework.git
+```
+
+```shell
+cd interconnect2017-sreframework
+```
+
+#### Understanding the directories:
+
+| File/Folder        | Explanation   |
+| ------------- |:-------------:|
+| env_setup      | Contains the files to setup the Demo Cloud service environment for our workshop |
+| inventory      | Holds the Ansible inventory files    |
+| playbooks | Contains the Ansible playbooks that we are going to code as a part of this workshop      |
+| sreFramework | Underlying Ansible-based SRE Framework leveraged by the Cloud Services to inject faults in their Environments |
+
+### Environment setup:
+
+Let's quickly setup the demo service environment for our workshop.
+
+```shell
+cd env_setup
+```
+
+```shell
+sh setup.sh
+```
+
+#### Expected output:
+
+```shell
+~/github/interconnect2017-sreframework/env_setup$ sh setup.sh
 
 
 
+*********** INITIATING SETUP **************
+
+>> Pulling the required docker images...
+>> Docker images pulled.
+
+>> Starting the Apache containers...
+Apache containers started successfully.
+
+>> Setting up the NginX Load Balancer...
+>> Load Balancer setup completed.
+
+>> Setting up CAdvisor to monitor the containers...
+>> CAdvisor set up successfully.
+
+*********** SETUP COMPLETED **************
+
+App:  http://localhost
+CAdvisor: http://localhost:8081
 
 
+```
+
+Now you have a running Demo Cloud Service environment in your VM.
+
+Open up a browser to check the running app at:
+
+*http://localhost*
+<a href="http://localhost target="blank">New Tab</a>
+
+And check cAdvisor at:
+
+*http://localhost:8081*
+<a href="http://localhost:8081 target="blank">New Tab</a>

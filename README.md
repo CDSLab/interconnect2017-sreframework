@@ -105,10 +105,8 @@ Now you have a running Demo Cloud Service environment in your VM.
 
 Open up a browser to check the running app at:
 
-*http://localhost*
-<a href="http://localhost target="blank">New Tab</a>
+<http://localhost>
 
 And check cAdvisor at:
 
-*http://localhost:8081*
-<a href="http://localhost:8081 target="blank">New Tab</a>
+<http://localhost:8081>

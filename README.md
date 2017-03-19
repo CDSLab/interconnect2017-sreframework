@@ -44,6 +44,7 @@ Open up the terminal.
 
 
 ```shell
+cd ~
 git clone https://github.com/CDSLab/interconnect2017-sreframework.git
 ```
 

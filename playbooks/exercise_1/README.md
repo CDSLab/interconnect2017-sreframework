@@ -45,3 +45,68 @@ Type in the following code into your `failover.yaml`
         when: result.status == 200
 
 ```
+
+#### Explaining the code:
+
+```shell
+- hosts: localhost
+```
+Use the localhost (defined in the inventory file) to perform the Tasks and Roles provided in the playbook.
+
+```shell
+  tasks:
+    - name: Ensure that the App is running
+      uri:
+        url: http://localhost:80
+```
+Using the Ansible URI module, confirm whether the app is running fine before we head on for the Failover.
+
+```shell
+roles:
+  - {
+      role: docker_operations,
+      docker_operation: stop_container,
+      container_name: app1
+    }
+```
+This is the core of our Fault Injection. Using the SRE framework role, use the Docker operations to stop the App1 container. Have a quick look at the SRE Framework structure [here](https://github.com/CDSLab/interconnect2017-sreframework/tree/master/sreFramework) and come back to our exercise.
+
+```shell
+  tasks:
+    - name: Test the App server Failover
+      uri:
+        url: http://localhost:80
+    - name: Verify the alert for killed server
+      uri:
+        url: http://localhost:8081/api/v1.3/docker/app1
+        register: result
+        fail: msg="Failed as the Server 1 is still active"
+        when: result.status == 200
+```      
+Post the fault injection, we verify whether the App is running again.
+In the real world scenario, we would use the PagerDuty Role in the SRE Framework to verify whether a PagerDuty Alert has been triggered for this event. For the sake of our workshop, we would just verify whether the Container App1 is down using the cAdvosir REST API.
+
+#### Lets run this playbook
+
+```shell
+cd ~/interconnect2017-sreframework/playbooks/
+```
+
+The file `ansible.cfg` defines the configurations for our Ansible playbooks.
+
+```shell
+[defaults]
+inventory = ../inventory/hosts
+roles_path = ../sreFramework/roles/
+library = ../sreFramework/modules
+callback_plugins = ../sreFramework/callback_plugins
+```
+
+We'll learn more about roles and modules in our Exercise 2.
+
+Run the `failover.yaml` playbook from this folder to have access to the Ansible configurations.
+
+```shell
+ansible-playbook exercise_1/failover.yaml
+```
+

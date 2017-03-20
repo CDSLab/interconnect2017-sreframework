@@ -90,6 +90,8 @@ You can copy the following code into your `failover.yaml`
       container_name: app1
     }
   post_tasks:
+    - pause:
+        seconds: 30
     - name: Test the App server failover
       uri:
         url: http://localhost:80

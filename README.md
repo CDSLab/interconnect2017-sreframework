@@ -34,7 +34,12 @@ For the sake of simplicity, lets consider a simple Cloud Service architecture co
 ### Instructions:
 
 _First things First..._
-* Log into the Ubuntu VM for our workshop 4486A using the credentials provided on the screen.
+* Navigate to the **labs \> 4486 \> 4486_Ubuntu-14-04-base** Folder from the Desktop.
+* Double-click the **Ubuntu-14-04.vmx** file.
+* Click **Power on this virtual machine** in the left panel.
+* Log into the Ubuntu VM for our workshop 4486A using the credentials provided on the left panel.
+    * Username: localuser
+    * Password: passw0rd
 * Make sure that you have Internet Connection.
 * Make sure that you are able to use a browser and the terminal.
 * If all’s well, we are good to go!
@@ -44,13 +49,10 @@ Open up the terminal.
 
 
 ```shell
-cd ~
-git clone https://github.com/CDSLab/interconnect2017-sreframework.git
+cd ~/interconnect2017-sreframework/
+git pull
 ```
 
-```shell
-cd interconnect2017-sreframework
-```
 
 #### Understanding the directories:
 
@@ -76,7 +78,7 @@ sh setup.sh
 #### Expected output:
 
 ```shell
-~/github/interconnect2017-sreframework/env_setup$ sh setup.sh
+~/interconnect2017-sreframework/env_setup$ sh setup.sh
 
 
 
@@ -121,7 +123,7 @@ docker ps
 #### Expected output:
 
 ```shell
-~/github/interconnect2017-sreframework$ docker ps
+~/interconnect2017-sreframework$ docker ps
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                         NAMES
 e4eb480fa089        google/cadvisor           "/usr/bin/cadvisor..."   8 minutes ago       Up 7 minutes        0.0.0.0:8081->8080/tcp        cadvisor
 d16a5378c7b1        smebberson/alpine-nginx   "/init"                  8 minutes ago       Up 8 minutes        0.0.0.0:80->80/tcp, 443/tcp   loadbalancer

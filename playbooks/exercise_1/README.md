@@ -184,6 +184,6 @@ We successfully:
 
 #### This SRE framework can be extended in ways you can imagine to enhance the Reliability and Robustness of our Cloud Services.
 
-If you have some extra time and are interested in knowing the SRE Framework in detail, try out the Exercise 2.
+If you have some extra time and are interested in knowing the SRE Framework in detail, try out the [Exercise 2](https://github.com/CDSLab/interconnect2017-sreframework/tree/master/playbooks/exercise_2).
 
 

@@ -13,26 +13,10 @@ Depending on the value of `docker_operation`, additional variables are required 
 | docker_operation |        Additional Required Variables        |
 |:----------------:|:-------------------------------------------:|
 |  stop_container  |               `container_name`              |
-| pull_image  | `image_name` [ repo/image:tag ] |
-| remove_image | `image_name` |
+
 
 Example Playbooks
 ----------------
-Start Container:
-```yaml
-
----
-- hosts: host-machine
-  roles:
-  - {
-      role: docker_operations,
-      docker_operation: start_container,
-      container_name: ubuntu,
-      image_name: ubuntu,
-      interactive: yes
-
-    }
-```
 
 Stop a container:
 ```yaml
@@ -46,31 +30,4 @@ Stop a container:
     }
 
 ```
-
-Pull an image:
-```yaml
----
-- hosts: host-machine
-  roles:
-  - {
-      role: docker_operations,
-      docker_operation: pull_image,
-      image_name: na.cumulusrepo.com/bi_basic/hello-world:latest
-    }
-
-```
-
-Remove an image:
-```yaml
----
-- hosts: host-machine
-  roles:
-  - {
-      role: docker_operations,
-      docker_operation: remove_image,
-      image_name: na.cumulusrepo.com/bi_basic/hello-world:latest
-    }
-
-```
-
 

@@ -176,7 +176,9 @@ We can verify whether the app is still running at <http://localhost>
 
 Also, check the [cAdvisor](http://localhost:8081) Docker Containers list and now you'll see that the App1 container is missing.
 
-We successfully tested the Failover Scenario for our Demo Cloud Service Environment and also made sure an alert is triggered every time the Docker Container is killed.
+We successfully:
+* tested the Failover Scenario for our Demo Cloud Service Environment and 
+* verified that an alert is triggered every time the Docker Container is killed
 
 #### This SRE framework can be extended in ways you can imagine to enhance the Reliability and Robustness of our Cloud Services.
 

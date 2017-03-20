@@ -45,7 +45,8 @@ _First things First..._
 * If all’s well, we are good to go!
 
 
-Open up the terminal.
+
+Open up the terminal and:
 
 
 ```shell

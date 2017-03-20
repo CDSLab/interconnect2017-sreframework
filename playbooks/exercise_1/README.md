@@ -170,7 +170,7 @@ localhost                  : ok=7    changed=0    unreachable=0    failed=0
 
 ```
 
-__And that's a job well done.__
+_And that's a job well done._ :simple_smile:
 
 We can verify whether the app is still running at <http://localhost>
 

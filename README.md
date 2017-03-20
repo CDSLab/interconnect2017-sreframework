@@ -50,8 +50,9 @@ Open up the terminal and:
 
 
 ```shell
-cd ~/interconnect2017-sreframework/
-git pull
+cd ~
+git clone https://github.com/CDSLab/interconnect2017-sreframework.git
+cd interconnect2017-sreframework/
 ```
 
 

@@ -12,7 +12,6 @@ Depending on the value of `docker_operation`, additional variables are required 
 
 | docker_operation |        Additional Required Variables        |
 |:----------------:|:-------------------------------------------:|
-|  start_container | `container_name` `image_name` `interactive` |
 |  stop_container  |               `container_name`              |
 | pull_image  | `image_name` [ repo/image:tag ] |
 | remove_image | `image_name` |

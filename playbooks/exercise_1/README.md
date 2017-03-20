@@ -170,10 +170,16 @@ localhost                  : ok=7    changed=0    unreachable=0    failed=0
 
 ```
 
-And that's a job well done.
+__And that's a job well done.__
 
 We can verify whether the app is still running at <http://localhost>
 
 Also, check the [cAdvisor](http://localhost:8081) Docker Containers list and now you'll see that the App1 container is missing.
+
+We successfully tested the Failover Scenario for our Demo Cloud Service Environment and also made sure an alert is triggered every time the Docker Container is killed.
+
+#### This SRE framework can be extended in ways you can imagine to enhance the Reliability and Robustness of our Cloud Services.
+
+If you have some extra time and are interested in knowing the SRE Framework in detail, try out the Exercise 2.
 
 

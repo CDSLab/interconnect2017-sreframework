@@ -23,8 +23,8 @@ Type in the following code into your `failover.yaml`
 ```shell
 ---
 - hosts: localhost
-  tasks:
-    - name: Ensure that the App is running
+  pre_tasks:
+    - name: Ensure that the app is running
       uri:
         url: http://localhost:80
   roles:
@@ -33,16 +33,20 @@ Type in the following code into your `failover.yaml`
       docker_operation: stop_container,
       container_name: app1
     }
-  tasks:
-    - name: Test the App server Failover
+  post_tasks:
+    - name: Test the App server failover
       uri:
         url: http://localhost:80
-    - name: Verify the alert for killed server
+    - name: Verify the heartbeat of the killed container
       uri:
         url: http://localhost:8081/api/v1.3/docker/app1
-        register: result
-        fail: msg="Failed as the Server 1 is still active"
-        when: result.status == 200
+        status_code: 500
+        return_content: yes
+      register: result
+    - name: Throw alert if no heartbeat detected
+      debug:
+        msg: "Triggering the alert for the Container App1"
+      when: "'failed to get Docker container' in result.content"
 
 ```
 
@@ -54,8 +58,8 @@ Type in the following code into your `failover.yaml`
 Use the localhost (defined in the inventory file) to perform the Tasks and Roles provided in the playbook.
 
 ```shell
-  tasks:
-    - name: Ensure that the App is running
+  pre_tasks:
+    - name: Ensure that the app is running
       uri:
         url: http://localhost:80
 ```
@@ -72,19 +76,26 @@ roles:
 This is the core of our Fault Injection. Using the SRE framework role, use the Docker operations to stop the App1 container. Have a quick look at the SRE Framework structure [here](https://github.com/CDSLab/interconnect2017-sreframework/tree/master/sreFramework) and come back to our exercise.
 
 ```shell
-  tasks:
-    - name: Test the App server Failover
+  post_tasks:
+    - name: Test the App server failover
       uri:
         url: http://localhost:80
-    - name: Verify the alert for killed server
+    - name: Verify the heartbeat of the killed container
       uri:
         url: http://localhost:8081/api/v1.3/docker/app1
-        register: result
-        fail: msg="Failed as the Server 1 is still active"
-        when: result.status == 200
+        status_code: 500
+        return_content: yes
+      register: result
+    - name: Throw alert if no heartbeat detected
+      debug:
+        msg: "Triggering the alert for the Container App1"
+      when: "'failed to get Docker container' in result.content"
 ```      
 Post the fault injection, we verify whether the App is running again.
-In the real world scenario, we would use the PagerDuty Role in the SRE Framework to verify whether a PagerDuty Alert has been triggered for this event. For the sake of our workshop, we would just verify whether the Container App1 is down using the cAdvosir REST API.
+In the real world scenario, we would use the PagerDuty Role in the SRE Framework to verify whether a PagerDuty Alert has been triggered for this event. 
+
+
+For the sake of our workshop, we would just verify whether the Container App1 is down using the cAdvosir REST API and display the message that an alert is triggered.
 
 #### Lets run this playbook
 

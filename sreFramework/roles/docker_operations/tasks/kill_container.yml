@@ -1,6 +1,0 @@
----
-- name: kill the docker container {{ container_name }}
-  docker_container:
-    name: "{{ container_name }}"
-    force_kill: yes
-

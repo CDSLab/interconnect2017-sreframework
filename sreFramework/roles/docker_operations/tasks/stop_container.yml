@@ -2,4 +2,4 @@
 - name: stop docker container {{ container_name }}
   docker_container:
     name: "{{ container_name }}"
-    state: stopped
+    state: absent

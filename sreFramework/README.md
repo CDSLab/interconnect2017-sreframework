@@ -8,10 +8,16 @@
 <img src="https://cloud.githubusercontent.com/assets/2295612/24100051/8f3865ee-0d2f-11e7-8e2a-6fca425876e0.jpg" width="600" height="400">
 </p>
 
-List of Fault Injection Roles:
-------------------------
-* [target_operations](https://github.com/CDSLab/interconnect2017-sreframework/tree/master/sreFramework/roles/target_operations)
-* [docker_operations](https://github.com/CDSLab/interconnect2017-sreframework/tree/master/sreFramework/roles/docker_operations)
+The SRE Framework is essentially a GIT submodule that is encapsulated from the Service specific entities like the playbooks and inventory files.
+
+
+By maintaining it as a GIT submodule, we can include it in the Service GIT repositories and yet have the ability to push new features that the services can leverage.
+
+## Intructions
+
+In this Exercise, let's add a new feature in this encapsulated framework that can be leveraged by our Demo Cloud Service.
+
+
 
 
 

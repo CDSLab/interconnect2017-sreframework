@@ -104,7 +104,7 @@ cd ~/interconnect2017-sreframework/playbooks/
 ```
 ---
 
-The file `ansible.cfg` defines the configurations for our Ansible playbooks.
+> The file `ansible.cfg` defines the configurations for our Ansible playbooks.
 
 ```shell
 [defaults]
@@ -115,7 +115,7 @@ stdout_callback = skippy
 display_skipped_hosts = False
 ```
 
-We'll learn more about roles and modules in our Exercise 2.
+> We'll learn more about roles and modules in our Exercise 2.
 
 ---
 

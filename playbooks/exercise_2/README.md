@@ -95,11 +95,51 @@ ansible-playbook exercise_2/start_app1.yaml
 #### Expected output:
 
 ```shell
+~/interconnect2017-sreframework/playbooks$ ansible-playbook exercise_2/start_app1.yaml 
+
+PLAY [localhost] ***************************************************************
+
+TASK [setup] *******************************************************************
+ok: [localhost]
+
+TASK [pip_operations : pip docker-py==1.9.0 to latest] *************************
+ok: [localhost]
+
+TASK [docker_operations : stop docker container app1] **************************
+
+TASK [docker_operations : start docker container app1 from image nimmis/alpine-apache] ***
+changed: [localhost]
+
+TASK [Verify the heartbeat of the started container] ***************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=1    unreachable=0    failed=0   
+
 
 ```
 
 
+_Voila!_
 
+We successfully created a generic operation that can be leveraged by Ansible playbooks to achieve Service Reliability.
+
+
+These were very simple operations to get you going for the workshop.
+
+We can create much more compleex scenarios and operations involving:
+* network operations
+* pagerduty operations
+* storage operations
+* target operations
+* docker operations
+* file system operations
+to name a few.
+
+
+### Thank you for your time. Hope you learned something interesting and would go explore it on your own.
+
+Feel free to contact Krunal Vora at kmvora@us.ibm.com for any further discussions.
 
 
 

@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  tasks:
+  pre_tasks:
     - name: Ensure that the app is running
       uri:
         url: http://localhost:80
@@ -10,13 +10,17 @@
       docker_operation: stop_container,
       container_name: app1
     }
-  tasks:
+  post_tasks:
     - name: Test the App server failover
       uri:
         url: http://localhost:80
-    - name: Verify the alert for killed server
+    - name: Verify the heartbeat of the killed container
       uri:
         url: http://localhost:8081/api/v1.3/docker/app1
-        register: result
-        fail: msg="Failed as the Server 1 is still active"
-        when: result.status == 200
+        status_code: 500
+        return_content: yes
+      register: result
+    - name: Throw alert if no heartbeat detected
+      debug:
+        msg: "Triggering the alert for the Container App1"
+      when: "'failed to get Docker container' in result.content"

@@ -6,8 +6,6 @@
 echo "\n\n\nTime: $(date)\n\n\n" >>$LOG_FILE
 echo "\n\n\n*********** INITIATING SETUP **************";
 
-. ./pip_setup.sh
-
 echo "\n>> Pulling the required docker images... " | tee -a $LOG_FILE
 
 if docker pull $APACHE_IMAGE >>$LOG_FILE 2>&1 &&

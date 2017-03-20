@@ -3,6 +3,3 @@
 
 - include: ./stop_container.yml
   when: docker_operation == "stop_container"
-
-- include: ./start_container.yml
-  when: docker_operation == "start_container"

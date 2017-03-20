@@ -4,11 +4,7 @@ SRE Fault Injection Framework
 
 Getting started:
 ----------------
-
-For a quick-start to the SRE Fault Injection Framework, read up the introduction in this  [Github wiki](https://github.ibm.com/cds-sre-org/sreFramework/wiki).
-
-
-Now that you have cloned your `<service>-fault-injection-framework` Git repo, lets get started:
+Ideally, the SRE Framework is provided as a GIT submodule to the GIT repositories wanting to utilize the framework.
 
 
 Updating the `sreFramework` Git Submodule: 
@@ -28,8 +24,9 @@ git submodule update --remote --recursive
 It is a good practice to keep the submodule updated using the command above.
 
 
-First Ansible playbook:
------------------------
+
+### NOTE: For the sake of our workshop, we have included the SRE Framework as a directory within the GIT repo and not a Submodule.
+
 
 > *Pre-requisites*
 > 

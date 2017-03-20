@@ -113,7 +113,7 @@ Open up a browser to check the running app at:
 
 
 <p align="center">
-<img src="https://cloud.githubusercontent.com/assets/2295612/24097782/a374d0c0-0d24-11e7-9084-8efb2556fcc8.png" width="600" height="400">
+<img src="https://cloud.githubusercontent.com/assets/2295612/24097782/a374d0c0-0d24-11e7-9084-8efb2556fcc8.png" >
 </p>
 
 
@@ -122,7 +122,7 @@ And check cAdvisor at:
 <http://localhost:8081>
 
 <p align="center">
-<img src="https://cloud.githubusercontent.com/assets/2295612/24097794/af58f4f2-0d24-11e7-865b-159251f8908b.png" width="600" height="400">
+<img src="https://cloud.githubusercontent.com/assets/2295612/24097794/af58f4f2-0d24-11e7-865b-159251f8908b.png" >
 </p>
 
 

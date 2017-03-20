@@ -13,7 +13,7 @@
 
 For the sake of simplicity, lets consider a simple Cloud Service architecture consisting of:
 
-* Two Apache Web Server Docker containers running a cloud App (Container 2 for failover scenario).
+* Two Apache Web Server Docker containers running a cloud App (Container 2 as Backup Server).
 * One NginX Load Balancer Docker container.
 * A cAdvisor Docker container monitoring the host machine as well as the Docker containers in the Cloud Service.
 

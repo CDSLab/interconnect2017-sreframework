@@ -134,3 +134,46 @@ Run the `failover.yaml` playbook from `playbooks` folder to have access to the A
 ansible-playbook exercise_1/failover.yaml
 ```
 
+#### Expected Output:
+
+```shell
+~/interconnect2017-sreframework/playbooks$ ansible-playbook exercise_1/failover.yaml 
+
+PLAY [localhost] ***************************************************************
+
+TASK [setup] *******************************************************************
+ok: [localhost]
+
+TASK [Ensure that the app is running] ******************************************
+ok: [localhost]
+
+TASK [pip_operations : pip docker-py==1.9.0 to latest] *************************
+ok: [localhost]
+
+TASK [docker_operations : stop docker container app1] **************************
+ok: [localhost]
+
+TASK [Test the App server failover] ********************************************
+ok: [localhost]
+
+TASK [Verify the heartbeat of the killed container] ****************************
+ok: [localhost]
+
+TASK [Throw alert if no heartbeat detected] ************************************
+ok: [localhost] => {
+    "msg": "Triggering the alert for the Container App1"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=0    unreachable=0    failed=0   
+
+
+```
+
+And that's a job well done.
+
+We can verify whether the app is still running at <http://localhost>
+
+Also, check the [cAdvisor](http://localhost:8081) Docker Containers list and now you'll see that the App1 container is missing.
+
+

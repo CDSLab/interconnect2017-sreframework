@@ -1,22 +1,12 @@
-SRE Fault Injection Framework
-==============================
+# Exercise 2
 
+## Adding a task to the target module in the SRE Fault Injection Framework
 
-Getting started:
-----------------
+## Encapsulated SRE Framework Architecture
 
-First Ansible playbook:
------------------------
-
-> *Pre-requisites*
-> 
-> * Ansible 2.0.1.0
-> * Python 2.7.10
-
-The only 2 things you need to provide to create a sufficient playbook are:
-* hosts
-* roles
-
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/2295612/24100051/8f3865ee-0d2f-11e7-8e2a-6fca425876e0.jpg" width="600" height="400">
+</p>
 
 List of Fault Injection Roles:
 ------------------------

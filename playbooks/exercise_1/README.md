@@ -111,7 +111,8 @@ The file `ansible.cfg` defines the configurations for our Ansible playbooks.
 inventory = ../inventory/hosts
 roles_path = ../sreFramework/roles/
 library = ../sreFramework/modules
-callback_plugins = ../sreFramework/callback_plugins
+stdout_callback = skippy
+display_skipped_hosts = False
 ```
 
 We'll learn more about roles and modules in our Exercise 2.

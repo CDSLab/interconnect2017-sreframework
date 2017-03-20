@@ -103,7 +103,7 @@ For the sake of our workshop, we would just verify whether the Container App1 is
 cd ~/interconnect2017-sreframework/playbooks/
 ```
 ---
-
+#### Please Note:
 > The file `ansible.cfg` defines the configurations for our Ansible playbooks.
 
 ```shell
